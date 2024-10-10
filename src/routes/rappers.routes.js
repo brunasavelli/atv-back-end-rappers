@@ -65,7 +65,7 @@ rappersRoutes.post("/", (req,res) => {
         })
     }
 
-    //Idade úmero inteiro
+    //Idade número inteiro
     const validacaoIdade = Number.isInteger(idade);
     console.log(validacaoIdade);
 
@@ -78,6 +78,58 @@ rappersRoutes.post("/", (req,res) => {
 
     suspeitos.push(novoSuspeito);
     return res.status(201).send(suspeitos)
+});
+
+//Buscar suspeito por ID
+rappersRoutes.get("/:id", (req,res) => {
+    const { id } = req.params;
+
+    const suspeito = suspeitos.find((suspeito) => suspeito.id == id);
+
+    if (!suspeito) {
+        return res
+        .status(404)
+        .json({message: "Suspeito não encontrado"});
+    }
+    return res.status(200).json(suspeito);
+});
+
+//Atualizar suspeitos
+rappersRoutes.put("/:id", (req, res) => {
+    const { id } = req.params
+    const suspeito = suspeitos.find((suspeitoAtualizado) => suspeitoAtualizado.id === Number(id));
+    console.log(suspeito);
+
+    if (!suspeito) {
+        return res.status(404).send({message: "Suspeito não encontrado!"})
+    };
+
+    const {nome_suspeito, idade, atividade_suspeita, descricao_fisica} = req.body;
+    console.log(nome_suspeito);
+    
+
+    suspeito.nome_suspeito = nome_suspeito;
+    suspeito.idade = idade;
+    suspeito.atividade_suspeita = atividade_suspeita;
+    suspeito.descricao_fisica = descricao_fisica;
+
+    suspeitos.push(suspeito);
+    return res.status(201).send(suspeito);
+})
+
+//Deletar um suspeito
+rappersRoutes.delete("/:id", (req,res) => {
+    const { id } = req.params
+
+    const suspeito = suspeitos.find((suspeitos) => suspeitos.id === Number(id));
+
+    if(!suspeito) {
+        return res.status(404).send({message: "Suspeito não encontrado"})
+    };
+
+    suspeito = suspeitos.filter((suspeitos) => suspeitos.id !== Number(id));
+
+    return res.status(200).send({message: "Suspeito deletado!"})
 })
 
 export default rappersRoutes
