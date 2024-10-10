@@ -1,0 +1,19 @@
+{
+  "name": "rappers",
+  "version": "1.0.0",
+  "description": "Atividade para Sistema de Cadastro de Suspeitos em Investigação do FBI",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "P-Diddy",
+    "Rapper",
+    "SENAI",
+    "dev",
+    "back-end",
+    "celebridade"
+  ],
+  "author": "Bruna Savelli",
+  "license": "MIT"
+}
