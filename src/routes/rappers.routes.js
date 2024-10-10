@@ -41,3 +41,11 @@ let suspeitos = [
     }
 ]
 
+//Buscar todos os suspeitos
+rappersRoutes.get("/", (req,res) => {
+    return res.status(200).send(suspeitos)
+})
+
+
+
+export default rappersRoutes

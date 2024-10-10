@@ -8,6 +8,6 @@ routes.get("/", (req, res) => {
     return res.status(200).send({ message: "Servidor funcionando!" })
 })
 
-routes.use("/rappers", rappersRoutes);
+routes.use("/suspeitos", rappersRoutes);
 
 export default routes;
