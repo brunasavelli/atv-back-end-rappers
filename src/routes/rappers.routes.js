@@ -121,13 +121,13 @@ rappersRoutes.put("/:id", (req, res) => {
 rappersRoutes.delete("/:id", (req,res) => {
     const { id } = req.params
 
-    const suspeito = suspeitos.find((suspeitos) => suspeitos.id === Number(id));
+    const suspeito = suspeitos.find((suspect) => suspect.id === Number(id));
 
     if(!suspeito) {
         return res.status(404).send({message: "Suspeito não encontrado"})
     };
 
-    suspeito = suspeitos.filter((suspeitos) => suspeitos.id !== Number(id));
+    suspeitos = suspeitos.filter((suspect) => suspect.id !== Number(id));
 
     return res.status(200).send({message: "Suspeito deletado!"})
 })
