@@ -66,8 +66,12 @@ rappersRoutes.post("/", (req,res) => {
     }
 
     //Idade número inteiro
-    const validacaoIdade = Number.isInteger(idade);
-    console.log(validacaoIdade);
+    if(!Number.isInteger(idade)) {
+        return res.status(400).send({
+            message: "A idade do suspeito precisa ser um número inteiro!"
+        })
+    }
+    
 
     //Validação de atividade suspeita
     if (atividade_suspeita != "sim" && atividade_suspeita != "não") {
